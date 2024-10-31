@@ -11,24 +11,8 @@ export const useTasks = () => {
 };
 
 export const TaskProvider = ({ children }) => {
-  const [tasks, setTasks] = useState([
-    //Agrego un estado para colocar el array de tareas, y asi se va actualizando en el setTasks
-    {
-      id: 1,
-      title: "Primer tarea",
-      description: "Esta es mi primer tarea",
-    },
-    {
-      id: 2,
-      title: "Segunda tarea",
-      description: "Debo aprender Nextjs",
-    },
-    {
-      id: 3,
-      title: "Tercer tarea",
-      description: "Debo aprender zustand",
-    },
-  ]);
+  //Agrego un estado para colocar el array de tareas, y asi se va actualizando en el setTasks
+  const [tasks, setTasks] = useState([]);
 
   //Funcion para crear tareas, copiando el arreglo de tareas que esten generadas, sumando nuevas
   const createTask = (title, description) =>
@@ -42,9 +26,13 @@ export const TaskProvider = ({ children }) => {
       },
     ]);
 
-  //Para utilizar mis funciones debo exportarlo aqui, coloco la funcion dentro del valor/value
+  //Funcion para eliminar tareas: Antes de copiar las tareas, lo filtro haciendo que si una tarea es diferente del ID, que no lo añada al arreglo
+  const deleteTask = (id) =>
+    setTasks([...tasks.filter((tasks) => tasks.id !== id)]);
+
+  //Para utilizar mis funciones/valores debo exportarlo aqui, coloco la funcion dentro del valor/value
   return (
-    <TaskContext.Provider value={{ tasks, createTask }}>
+    <TaskContext.Provider value={{ tasks, createTask, deleteTask }}>
       {children}
     </TaskContext.Provider>
   );
