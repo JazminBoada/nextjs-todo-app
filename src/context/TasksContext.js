@@ -14,7 +14,8 @@ export const TaskProvider = ({ children }) => {
   //Agrego un estado para colocar el array de tareas, y asi se va actualizando en el setTasks
   const [tasks, setTasks] = useState([]);
 
-  //Funcion para crear tareas, copiando el arreglo de tareas que esten generadas, sumando nuevas
+  //Funcion para CREAR tareas
+  //Copiando el arreglo de tareas que esten generadas, sumando nuevas
   const createTask = (title, description) =>
     setTasks([
       ...tasks,
@@ -26,9 +27,15 @@ export const TaskProvider = ({ children }) => {
       },
     ]);
 
-  //Funcion para eliminar tareas: Antes de copiar las tareas, lo filtro haciendo que si una tarea es diferente del ID, que no lo añada al arreglo
+  //Funcion para ELIMINAR tareas
+  //Antes de copiar las tareas, lo filtro haciendo que si una tarea es diferente del ID, que no lo añada al arreglo
   const deleteTask = (id) =>
     setTasks([...tasks.filter((tasks) => tasks.id !== id)]);
+
+  //Funcion para ACTUALIZAR tareas
+  //Copiamos las tareas, las recorremos y le decimos si el task.id es igual al ID, que se actualicee, sino no.
+  const updateTask = (id) =>
+    setTasks([...tasks.map((task) => (task.id === id ? {} : task))]);
 
   //Para utilizar mis funciones/valores debo exportarlo aqui, coloco la funcion dentro del valor/value
   return (
