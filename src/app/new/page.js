@@ -6,7 +6,7 @@ import { useRouter, useParams } from "next/navigation";
 function Page() {
   //Para capturar los valores, vamos a usar un estado, guardo todo en la tarea y cuando se actualice, en el setTask
   const [task, setTask] = useState({ title: "", description: "" });
-  const { tasks, createTask } = useTasks();
+  const { tasks, createTask, updateTask } = useTasks();
   const router = useRouter();
   const params = useParams();
 
@@ -17,7 +17,11 @@ function Page() {
     //No se reinicia la pagina del form cuando le doy submit
     e.preventDefault();
     //Creacion de tarea y con el router me envia a la pagina principal con la nueva tarea añadida
-    createTask(task.title, task.description);
+    if (params.id) {
+      updateTask(params.id, task);
+    } else {
+      createTask(task.title, task.description);
+    }
     router.push("/");
   };
 

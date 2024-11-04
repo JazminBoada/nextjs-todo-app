@@ -34,12 +34,15 @@ export const TaskProvider = ({ children }) => {
 
   //Funcion para ACTUALIZAR tareas
   //Copiamos las tareas, las recorremos y le decimos si el task.id es igual al ID, que se actualicee, sino no.
-  const updateTask = (id) =>
-    setTasks([...tasks.map((task) => (task.id === id ? {} : task))]);
+  //Creo un objeto nuevo con el titulo y la descripcion actualizados
+  const updateTask = (id, newData) =>
+    setTasks([
+      ...tasks.map((task) => (task.id === id ? { ...task, ...newData } : task)),
+    ]);
 
   //Para utilizar mis funciones/valores debo exportarlo aqui, coloco la funcion dentro del valor/value
   return (
-    <TaskContext.Provider value={{ tasks, createTask, deleteTask }}>
+    <TaskContext.Provider value={{ tasks, createTask, deleteTask, updateTask }}>
       {children}
     </TaskContext.Provider>
   );
