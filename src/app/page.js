@@ -7,8 +7,8 @@ function page() {
   const { tasks } = useTasks();
   return (
     <div>
-      {tasks.map((task) => (
-        <TaskCard task={task} key={task.id} /> //Le coloco como propiedad la tarea que se espera recibir
+      {tasks.map((task, i) => (
+        <TaskCard task={task} key={i} /> //Le coloco como propiedad la tarea que se espera recibir
       ))}
     </div>
   );

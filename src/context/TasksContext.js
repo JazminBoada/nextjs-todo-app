@@ -1,6 +1,7 @@
 "use client";
 import { createContext, useContext, useState } from "react";
 import { v4 as uuid } from "uuid";
+import { useLocalStorage } from "@/Hooks/useLocalStorage";
 
 export const TaskContext = createContext();
 //Hook useTaks para usar el provider sin tener que llamar al usecontext y taskcontext constantemente
@@ -11,8 +12,8 @@ export const useTasks = () => {
 };
 
 export const TaskProvider = ({ children }) => {
-  //Agrego un estado para colocar el array de tareas, y asi se va actualizando en el setTasks
-  const [tasks, setTasks] = useState([]);
+  //Gaurdado en LocalStorage
+  const [tasks, setTasks] = useLocalStorage("tasks", []);
 
   //Funcion para CREAR tareas
   //Copiando el arreglo de tareas que esten generadas, sumando nuevas
