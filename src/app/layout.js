@@ -2,6 +2,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { TaskProvider } from "@/context/TasksContext";
 import Navbar from "@/components/Navbar";
+import { Toaster } from "react-hot-toast";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -28,6 +29,7 @@ export default function RootLayout({ children }) {
         <TaskProvider>
           <Navbar />
           {children}
+          <Toaster />
         </TaskProvider>
       </body>
     </html>

@@ -1,6 +1,7 @@
 import React from "react";
 import { useRouter } from "next/navigation";
 import { useTasks } from "@/context/TasksContext";
+import { toast } from "react-hot-toast";
 
 export const TaskCard = ({ task }) => {
   const router = useRouter();
@@ -16,7 +17,10 @@ export const TaskCard = ({ task }) => {
       <button
         onClick={(e) => {
           e.stopPropagation(); //Tocar Eliminar y que termine ahi el evento y no genere errores
+          if (deleteTask) {
+          }
           deleteTask(task.id); //Colco task.id porque ademas de eliminar la tarea, se colocara el ID de la tarea actual que se esta recorriendo
+          toast.success("Tarea eliminada correctamente");
         }}
         className="text-white bg-slate-800 rounded-md p-2 mt-2"
       >

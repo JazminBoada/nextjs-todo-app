@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useTasks } from "@/context/TasksContext";
 import { useRouter, useParams } from "next/navigation";
 import { useForm } from "react-hook-form";
+import { toast } from "react-hot-toast";
 
 function Page() {
   const { register, handleSubmit, setValue } = useForm();
@@ -13,8 +14,10 @@ function Page() {
   const onSubmit = handleSubmit((data) => {
     if (params.id) {
       updateTask(params.id, data);
+      toast.success("Tarea actualizada correctamente");
     } else {
       createTask(data.title, data.description);
+      toast.success("Tarea creada correctamente");
     }
     router.push("/");
   });
@@ -35,7 +38,10 @@ function Page() {
   return (
     <form onSubmit={onSubmit}>
       <input placeholder="Titulo" {...register("title")} />
-      <textarea placeholder="Tarea" {...register("description")}></textarea>
+      <textarea
+        placeholder="Escribe tu tarea"
+        {...register("description")}
+      ></textarea>
       <button>Guardar</button>
     </form>
   );
