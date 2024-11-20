@@ -13,8 +13,8 @@ module.exports = {
     extend: {
       fontFamily: {
         logo: "Merienda, serif;",
-        "logo-sm": "Emblema One, system-ui",
         "logo-xl": "Bodoni Moda, serif",
+        "logo-md": "Staatliches, serif",
       },
       colors: {
         "icons-neutral": "#252a34",
