@@ -61,11 +61,11 @@ function Page() {
       <textarea
         placeholder="Escribe tu tarea..."
         {...register("description")}
-        className="shadow-xl w-[50vw] h-[50vh] max-w-5xl max-h-screen p-4 border border-gray-300 rounded-md resize-none outline-gray-400 "
+        className="w-[50vw] h-[50vh] max-w-5xl max-h-screen p-4 border border-gray-300 rounded-md resize-none outline-gray-400 "
       ></textarea>
 
       {/* Botón de guardar centrado */}
-      <Button className="self-center">Guardar tarea</Button>
+      <Button className="self-center p-6 text-xl">Guardar tarea</Button>
     </form>
   );
 }
