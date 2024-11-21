@@ -17,11 +17,12 @@ module.exports = {
         "logo-md": "Staatliches, serif",
       },
       colors: {
-        "icons-neutral": "#252a34",
-        "icons-light": "#3c5280",
-        "text-dark": "#182137",
-        "blue-dark": "#121212",
-        "blue-neutral": "#383e49",
+        "blue-bg": "#f4f9e9",
+        "icons-blue": "#284b63",
+        "text-color": "#444444",
+        "white-task": "#f4f9e9",
+        "blue-neutral": "#153243",
+
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {
