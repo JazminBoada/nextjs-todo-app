@@ -6,10 +6,45 @@
 @tailwind utilities;
 
 * {
-  margin: 0;
   padding: 0;
+  margin: 0;
   box-sizing: border-box;
   font-family: "Lora", serif;
+}
+
+body {
+  min-height: 100vh;
+  padding: 100px 400px;
+  background: rgb(141, 169, 196);
+  background: linear-gradient(
+    180deg,
+    rgba(141, 169, 196, 1) 39%,
+    rgba(227, 234, 240, 1) 100%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  overflow-y: auto; /* Permite scroll vertical solo si es necesario */
+  overflow-x: hidden;
+}
+
+/* Para pantallas medianas (tablet, etc.) */
+@media (max-width: 1024px) {
+  body {
+    padding: 60px 100px;
+  }
+}
+
+/* Para pantallas pequeñas (smartphones) */
+@media (max-width: 768px) {
+  body {
+    padding: 50px 80px;
+  }
+}
+
+/* Para pantallas muy pequeñas */
+@media (max-width: 425px) {
+  body {
+    padding: 0;
+  }
 }
 
 @layer base {

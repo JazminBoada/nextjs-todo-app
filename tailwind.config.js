@@ -16,9 +16,13 @@ module.exports = {
         "logo-xl": "Bodoni Moda, serif",
         "logo-md": "Staatliches, serif",
       },
+      backgroundImage: {
+        "custom-gradient":
+          "linear-gradient(180deg, rgba(141, 169, 196, 1) 39%, rgba(227, 234, 240, 1) 100%, rgba(255, 255, 255, 1) 100%)",
+      },
       colors: {
-        "blue-bg": "#f4f9e9",
-        "icons-blue": "#284b63",
+        "blue-bg": "#8da9c4",
+        "icons-blue": "#657c9d",
         "text-color": "#444444",
         "white-task": "#f4f9e9",
         "blue-neutral": "#153243",

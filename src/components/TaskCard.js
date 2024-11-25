@@ -17,9 +17,9 @@ export const TaskCard = ({ task }) => {
   };
 
   return (
-    <div className="mt-10 bg-white rounded-md max-w-md h-52 space-y-5 p-5 border border-slate-300 shadow-sm relative">
-      <div className="flex flex-row items-center justify-between pb-2 ">
-        <h1 className="text-gray-600 font-bold text-xl">{task.title}</h1>
+    <div className="mt-5 bg-white rounded-md w-80 h-52 space-y-5 p-5 md:border md:border-slate-300 relative shadow-md md:shadow-none ">
+      <div className="flex flex-row items-center justify-between pb-2 border-b border-b-slate-300">
+        <h1 className="text-gray-600 font-bold text-xl ">{task.title}</h1>
 
         {/* Botón para abrir el menú */}
         <Button
@@ -31,7 +31,7 @@ export const TaskCard = ({ task }) => {
 
         {/* Menú desplegable */}
         <div
-          className={`absolute top-16 right-[-125px] mt-1 w-auto bg-white border border-gray-200 rounded-md shadow-md transition-all duration-300 transform z-50 ${
+          className={`absolute top-16 right-[-125px] mt-1 w-auto bg-white border border-gray-200 rounded-md shadow-xl transition-all duration-300 transform z-50 ${
             isOpen
               ? "opacity-100 translate-y-0 scale-100"
               : "opacity-0 -translate-y-4 scale-95 pointer-events-none"
@@ -61,7 +61,7 @@ export const TaskCard = ({ task }) => {
 
       <p className="text-gray-500">{task.description}</p>
 
-      <div className="pt-5 text-end">
+      <div className="fixed right-12">
         <Button
           onClick={() => router.push(`/edit/${task.id}`)}
           className="rounded-2xl px-3 "

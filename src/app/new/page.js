@@ -39,7 +39,7 @@ function Page() {
   }, [params, tasks, setValue]); //Añado dependencias y se ejecutara dicha funcion cuando params/tasks o setValue se actualicen
 
   return (
-    <div className=" min-h-screen">
+    <div className="lg:bg-white rounded-b-xl overflow-hidden lg:shadow-xl">
       <section className="p-5">
         <Link href={"/"}>
           <Button className="rounded-full w-10 h-10 shadow-sm ">
@@ -47,27 +47,28 @@ function Page() {
           </Button>
         </Link>
       </section>
+
       <form
         onSubmit={onSubmit}
-        className="flex flex-col items-center justify-center space-y-4 pt-10"
+        className="flex flex-col items-center justify-center space-y-4 pt-10 md:pt-5 xl:pb-10"
       >
-        <div className="flex flex-row items-center gap-4 w-72 md:w-[70vh] xl:w-[50vw]">
+        <div className="flex flex-row items-center gap-4 w-3/4 md:w-[70vh] xl:w-[50vw]">
           <input
-            placeholder="Título de la tarea"
+            placeholder="Título"
             {...register("title")}
-            className="text-2xl xl:text-3xl flex-1 bg-transparent outline-none"
+            className="text-md xl:text-3xl flex-1 bg-white rounded-md outline-none p-4 md:p-0 shadow-md lg:shadow-none"
           />
         </div>
 
-        {/* Textarea centrado */}
         <textarea
-          placeholder="Escribe tu tarea..."
+          placeholder="Descripción"
           {...register("description")}
-          className="w-72 md:w-[70vh] xl:w-[50vw] h-[50vh] max-w-5xl max-h-screen p-4 border border-slate-300 rounded-md resize-none outline-gray-400 "
+          className=" w-3/4 h-96 md:w-[70vh] xl:w-[50vw] max-w-5xl p-4 shadow-md lg:shadow-none lg:border lg:border-slate-300 rounded-md resize-none outline-none"
         ></textarea>
 
-        {/* Botón de guardar centrado */}
-        <Button className="self-center p-4 xl:p-6 xl:text-xl">Guardar</Button>
+        <Button className="p-4 xl:p-6 xl:text-md rounded-full shadow-xl">
+          Guardar
+        </Button>
       </form>
     </div>
   );

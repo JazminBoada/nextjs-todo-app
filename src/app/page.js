@@ -8,16 +8,14 @@ import { useRouter } from "next/navigation";
 import { Input } from "@/components/ui/input";
 
 function Page() {
-  const { tasks } = useTasks(); // Estado global de tareas
+  const { tasks } = useTasks();
   const router = useRouter();
-  const [searchTerm, setSearchTerm] = useState(""); // Estado para el término de búsqueda
+  const [searchTerm, setSearchTerm] = useState("");
 
-  // Función para manejar el cambio en la barra de búsqueda
   const handleSearch = (e) => {
     setSearchTerm(e.target.value.toLowerCase());
   };
 
-  // Filtrar tareas dinámicamente
   const filteredTasks = tasks.filter(
     (task) =>
       task.description.toLowerCase().includes(searchTerm) ||
@@ -25,41 +23,50 @@ function Page() {
   );
 
   return (
-    <section className="flex flex-col p-10 min-h-screen">
-      <div className="flex flex-row items-center justify-between gap-4">
+    <section className="flex flex-col px-4 py-8 md:bg-white md:rounded-b-xl overflow-hidden lg:shadow-xl">
+      <div className="hidden md:flex md:flex-row md:items-center md:justify-between lg:gap-4 pb-10">
         <Button
           onClick={() => router.push("/new")}
-          className="flex items-center gap-2 text-white rounded-md shadow-md p-4 md:p-6"
+          className="flex items-center gap-2 text-white shadow-md p-4 md:p-6 rounded-full"
         >
-          <h1 className="md:text-xl">Crear tarea</h1>
+          <h1 className="md:text-md">Crear tarea</h1>
           <Plus
             style={{ width: "19px", height: "19px" }}
             className="text-white"
           />
         </Button>
-        <div className="relative">
+        <div className="relative pr-4">
           <Input
-            className="pl-10 md:placeholder:text-lg border border-slate-300 placeholder:text-gray-400"
+            className="pl-10 md:placeholder:text-md border border-slate-300 placeholder:text-gray-400 rounded-full "
             placeholder="Buscar"
-            value={searchTerm} // Asocia el valor del input al estado de búsqueda
-            onChange={handleSearch} // Actualiza el estado al escribir
+            value={searchTerm}
+            onChange={handleSearch}
           />
           <Search
             style={{ width: "20px", height: "20px" }}
-            className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+            className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 "
           />
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2">
-        {/* Renderizado de las tareas filtradas */}
+      {/* Contenedor de tareas */}
+      <div className="flex flex-col md:flex-row flex-wrap items-center md:justify-center lg:justify-start md:gap-2">
         {filteredTasks.length > 0 ? (
           filteredTasks.map((task) => <TaskCard task={task} key={task.id} />)
         ) : (
-          <p className="text-gray-600 text-2xl font-semibold px-15 py-20 ">
-            No se encontraron tareas.
+          <p className="text-gray-800 md:text-gray-400 text-2xl font-semibold py-20 flex-grow flex justify-center items-center">
+            No se encontraron tareas
           </p>
         )}
+      </div>
+
+      <div className="md:hidden fixed bottom-4 right-4 z-50 ">
+        <Button
+          onClick={() => router.push("/new")}
+          className="rounded-full w-10 h-10 shadow-sm bg-slate-600"
+        >
+          <Plus style={{ width: "19px", height: "19px" }} />
+        </Button>
       </div>
     </section>
   );
