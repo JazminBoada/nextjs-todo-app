@@ -50,7 +50,7 @@ function Page() {
       </div>
 
       {/* Contenedor de tareas */}
-      <div className="flex flex-col md:flex-row flex-wrap items-center md:justify-center lg:justify-start md:gap-2">
+      <div className="flex flex-col md:flex-row flex-wrap items-center md:justify-center lg:justify-start md:gap-8">
         {filteredTasks.length > 0 ? (
           filteredTasks.map((task) => <TaskCard task={task} key={task.id} />)
         ) : (

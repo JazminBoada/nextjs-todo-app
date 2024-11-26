@@ -11,6 +11,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      boxShadow: {
+        "even-shadow":
+          "0px 5px 10px rgba(0, 0, 0, 0.1), 0px -2px 4px rgba(0, 0, 0, 0.05), 2px 0px 4px rgba(0, 0, 0, 0.05), -3px 0px 7px rgba(0, 0, 0, 0.05)",
+      },
       fontFamily: {
         logo: "Merienda, serif;",
         "logo-xl": "Bodoni Moda, serif",
