@@ -3,12 +3,13 @@ import { useRouter } from "next/navigation";
 import { useTasks } from "@/context/TasksContext";
 import { toast } from "react-hot-toast";
 import { EllipsisVertical, Pencil, Star, Palette, Trash } from "lucide-react";
+import { BsFillStarFill } from "react-icons/bs";
 import { Button } from "./ui/button";
 import ButtonCard from "@/components/ButtonCard";
 
 export const TaskCard = ({ task }) => {
   const router = useRouter();
-  const { deleteTask, updateTaskColor } = useTasks();
+  const { deleteTask, updateTaskColor, markAsFavorite } = useTasks();
   const [isOpen, setIsOpen] = useState(false);
   const [isColorMenuOpen, setIsColorMenuOpen] = useState(false);
   const menuRef = useRef(null);
@@ -43,13 +44,31 @@ export const TaskCard = ({ task }) => {
       <div className="flex flex-row items-center justify-between pb-2 border-b border-b-slate-300">
         <h1 className="text-gray-600 font-bold text-xl">{task.title}</h1>
 
-        {/* Botón para abrir el menú */}
-        <Button
-          onClick={() => setIsOpen((prev) => !prev)}
-          className="relative text-black bg-white rounded-2xl px-3 shadow-md"
-        >
-          <EllipsisVertical />
-        </Button>
+        <div className="flex flex-row items-center gap-4">
+          <button
+            onClick={() => markAsFavorite(task.id)}
+            title={
+              task.isFavorite ? "Quitar de favoritos" : "Agregar a favoritos"
+            }
+            className="text-yellow-400"
+          >
+            <BsFillStarFill
+              style={{
+                width: "20px",
+                height: "20px",
+                display: task.isFavorite ? "block" : "none", // Cambia la visibilidad según el estado
+              }}
+            />
+          </button>
+
+          {/* Botón para abrir el menú */}
+          <Button
+            onClick={() => setIsOpen((prev) => !prev)}
+            className="relative text-black bg-white rounded-2xl px-3 shadow-md"
+          >
+            <EllipsisVertical />
+          </Button>
+        </div>
 
         {/* Menú desplegable principal */}
         <div
@@ -61,9 +80,22 @@ export const TaskCard = ({ task }) => {
           }`}
         >
           <ul className="flex flex-col items-start pr-4 pl-2 py-2">
-            <li>
-              <ButtonCard icon={<Star />} title="Favorito" />
-            </li>
+            <div
+              onClick={() => {
+                markAsFavorite(task.id), setIsOpen(false);
+              }}
+            >
+              <li>
+                <ButtonCard
+                  icon={<Star />}
+                  title={
+                    task.isFavorite
+                      ? "Quitar de favoritos"
+                      : "Agregar a favoritos"
+                  }
+                />
+              </li>
+            </div>
 
             {/* Submenú de colores */}
             <li>

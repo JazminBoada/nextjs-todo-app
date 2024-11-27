@@ -5,7 +5,6 @@ import { TaskCard } from "@/components/TaskCard";
 import { Button } from "@/components/ui/button";
 import { Plus, Search } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { Input } from "@/components/ui/input";
 
 function Page() {
   const { tasks } = useTasks();
@@ -16,11 +15,13 @@ function Page() {
     setSearchTerm(e.target.value.toLowerCase());
   };
 
-  const filteredTasks = tasks.filter(
-    (task) =>
-      task.description.toLowerCase().includes(searchTerm) ||
-      task.title.toLowerCase().includes(searchTerm)
-  );
+  const filteredTasks = tasks
+    .filter(
+      (task) =>
+        task.description.toLowerCase().includes(searchTerm) ||
+        task.title.toLowerCase().includes(searchTerm)
+    )
+    .sort((a, b) => b.isFavorite - a.isFavorite); // Ordena por favoritos
 
   return (
     <section className="flex flex-col px-4 py-8 md:bg-fuchsia-50 md:rounded-b-xl overflow-hidden lg:shadow-xl">
@@ -50,7 +51,7 @@ function Page() {
       </div>
 
       {/* Contenedor de tareas */}
-      <div className="flex flex-col md:flex-row flex-wrap items-center md:justify-center lg:justify-start md:gap-8">
+      <div className="flex flex-col md:flex-row flex-wrap items-center md:justify-center lg:justify-start md:gap-8 md:px-4">
         {filteredTasks.length > 0 ? (
           filteredTasks.map((task) => <TaskCard task={task} key={task.id} />)
         ) : (

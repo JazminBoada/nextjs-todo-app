@@ -26,6 +26,7 @@ export const TaskProvider = ({ children }) => {
         //Podria usar el task.length pero uso la biblioteca uuid, otorgara un string unico
         id: uuid(),
         color: "bg-white",
+        isFavorite: false,
       },
     ]);
 
@@ -52,10 +53,28 @@ export const TaskProvider = ({ children }) => {
       )
     );
 
+  //Funcion para añadir a FAVORITOS la tarea
+  const markAsFavorite = (id) => {
+    setTasks(
+      tasks.map((task) =>
+        task.id === id
+          ? { ...task, isFavorite: !task.isFavorite } // Cambia el estado de favorito
+          : task
+      )
+    );
+  };
+
   //Para utilizar mis funciones/valores debo exportarlo aqui, coloco la funcion dentro del valor/value
   return (
     <TaskContext.Provider
-      value={{ tasks, createTask, deleteTask, updateTask, updateTaskColor }}
+      value={{
+        tasks,
+        createTask,
+        deleteTask,
+        updateTask,
+        updateTaskColor,
+        markAsFavorite,
+      }}
     >
       {children}
     </TaskContext.Provider>
