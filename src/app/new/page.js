@@ -39,7 +39,7 @@ function Page() {
   }, [params, tasks, setValue]); //Añado dependencias y se ejecutara dicha funcion cuando params/tasks o setValue se actualicen
 
   return (
-    <div className="lg:bg-white rounded-b-xl overflow-hidden lg:shadow-xl">
+    <div className="lg:bg-fuchsia-50 rounded-b-xl overflow-hidden lg:shadow-xl">
       <section className="p-5">
         <Link href={"/"}>
           <Button className="rounded-full w-10 h-10 shadow-sm ">
@@ -56,14 +56,14 @@ function Page() {
           <input
             placeholder="Título"
             {...register("title")}
-            className="text-md xl:text-3xl flex-1 bg-white rounded-md outline-none p-4 md:p-0 shadow-md lg:shadow-none"
+            className="text-md xl:text-3xl flex-1 bg-white lg:bg-transparent rounded-md outline-none p-4 md:p-0 shadow-md lg:shadow-none"
           />
         </div>
 
         <textarea
           placeholder="Descripción"
           {...register("description")}
-          className=" w-3/4 h-96 md:w-[70vh] xl:w-[50vw] max-w-5xl p-4 shadow-md lg:shadow-none lg:border lg:border-slate-300 rounded-md resize-none outline-none"
+          className=" w-3/4 h-96 md:w-[70vh] xl:w-[50vw] max-w-5xl p-4 shadow-xl rounded-md resize-none outline-none"
         ></textarea>
 
         <Button className="p-4 xl:p-6 xl:text-md rounded-full shadow-xl">

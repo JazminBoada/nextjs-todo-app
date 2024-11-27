@@ -7,7 +7,7 @@ import { NotebookPen } from "lucide-react";
 function Navbar() {
   const router = useRouter(); //hook
   return (
-    <header className="px-4 pt-4 pb-8 text-gray-600 border-b border-b-slate-300 bg-white md:rounded-t-lg shadow-md lg:shadow-none">
+    <header className="px-4 pt-4 pb-8   bg-white md:bg-fuchsia-50 md:rounded-t-lg shadow-md lg:shadow-none">
       <Link href={"/"}>
         <div className="flex items-center flex-row gap-2">
           <NotebookPen className="w-9 h-9" />

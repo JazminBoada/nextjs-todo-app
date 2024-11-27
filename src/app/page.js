@@ -23,7 +23,7 @@ function Page() {
   );
 
   return (
-    <section className="flex flex-col px-4 py-8 md:bg-white md:rounded-b-xl overflow-hidden lg:shadow-xl">
+    <section className="flex flex-col px-4 py-8 md:bg-fuchsia-50 md:rounded-b-xl overflow-hidden lg:shadow-xl">
       <div className="hidden md:flex md:flex-row md:items-center md:justify-between lg:gap-4 pb-10">
         <Button
           onClick={() => router.push("/new")}
@@ -35,16 +35,16 @@ function Page() {
             className="text-white"
           />
         </Button>
-        <div className="relative pr-4">
-          <Input
-            className="pl-10 md:placeholder:text-md border border-slate-300 placeholder:text-gray-400 rounded-full "
+        <div className="relative flex items-center flex-row gap-2">
+          <button className="absolute left-0 top-1/2 transform -translate-y-1/2 ">
+            <Search style={{ width: "16px", height: "16x" }} />
+          </button>
+          <input
+            className="border-b border-b-black outline-none bg-transparent pl-6 pr-4 placeholder:pl-0 transform transition-all duration-300"
+            type="text"
             placeholder="Buscar"
             value={searchTerm}
             onChange={handleSearch}
-          />
-          <Search
-            style={{ width: "20px", height: "20px" }}
-            className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 "
           />
         </div>
       </div>
@@ -63,7 +63,7 @@ function Page() {
       <div className="md:hidden fixed bottom-4 right-4 z-50 ">
         <Button
           onClick={() => router.push("/new")}
-          className="rounded-full w-10 h-10 shadow-sm bg-slate-600"
+          className="rounded-full w-10 h-10 shadow-sm bg-black"
         >
           <Plus style={{ width: "19px", height: "19px" }} />
         </Button>
