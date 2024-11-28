@@ -26,21 +26,20 @@ body {
   overflow-x: hidden;
 }
 
-/* Para pantallas medianas (tablet, etc.) */
 @media (max-width: 1024px) {
   body {
     padding: 60px 100px;
   }
 }
 
-/* Para pantallas pequeñas (smartphones) */
+
 @media (max-width: 768px) {
   body {
     padding: 50px 80px;
   }
 }
 
-/* Para pantallas muy pequeñas */
+
 @media (max-width: 425px) {
   body {
     padding: 0;

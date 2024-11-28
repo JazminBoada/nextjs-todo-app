@@ -7,6 +7,7 @@ import { toast } from "react-hot-toast";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 function Page() {
   const { register, handleSubmit, setValue } = useForm();
@@ -40,36 +41,43 @@ function Page() {
 
   return (
     <div className="lg:bg-fuchsia-50 rounded-b-xl overflow-hidden lg:shadow-xl">
-      <section className="p-5">
-        <Link href={"/"}>
-          <Button className="rounded-full w-10 h-10 shadow-sm ">
-            <ArrowLeft style={{ width: "20px", height: "20px" }} />
-          </Button>
-        </Link>
-      </section>
-
-      <form
-        onSubmit={onSubmit}
-        className="flex flex-col items-center justify-center space-y-4 pt-10 md:pt-5 xl:pb-10"
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.6 }}
       >
-        <div className="flex flex-row items-center gap-4 w-3/4 md:w-[70vh] xl:w-[50vw]">
-          <input
-            placeholder="Título"
-            {...register("title")}
-            className="text-md xl:text-3xl flex-1 bg-white lg:bg-transparent rounded-md outline-none p-4 md:p-0 shadow-md lg:shadow-none"
-          />
-        </div>
+        <section className="p-5">
+          <Link href={"/"}>
+            <Button className="rounded-full w-10 h-10 shadow-sm ">
+              <ArrowLeft style={{ width: "20px", height: "20px" }} />
+            </Button>
+          </Link>
+        </section>
 
-        <textarea
-          placeholder="Descripción"
-          {...register("description")}
-          className=" w-3/4 h-96 md:w-[70vh] xl:w-[50vw] max-w-5xl p-4 shadow-xl rounded-md resize-none outline-none"
-        ></textarea>
+        <form
+          onSubmit={onSubmit}
+          className="flex flex-col items-center justify-center space-y-4 pt-10 md:pt-5 xl:pb-10"
+        >
+          <div className="flex flex-row items-center gap-4 w-3/4 md:w-[70vh] xl:w-[50vw]">
+            <input
+              placeholder="Título"
+              {...register("title")}
+              className="text-md xl:text-3xl flex-1 bg-white lg:bg-transparent rounded-md outline-none p-4 md:p-0 shadow-md lg:shadow-none"
+            />
+          </div>
 
-        <Button className="p-4 xl:p-6 xl:text-md rounded-full shadow-xl">
-          Guardar
-        </Button>
-      </form>
+          <textarea
+            placeholder="Descripción"
+            {...register("description")}
+            className=" w-3/4 h-96 md:w-[70vh] xl:w-[50vw] max-w-5xl p-4 shadow-xl rounded-md resize-none outline-none"
+          ></textarea>
+
+          <Button className="p-4 xl:p-6 xl:text-md rounded-full shadow-xl">
+            Guardar
+          </Button>
+        </form>
+      </motion.div>
     </div>
   );
 }

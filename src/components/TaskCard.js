@@ -39,7 +39,7 @@ export const TaskCard = ({ task }) => {
 
   return (
     <div
-      className={`mt-5 ${task.color} rounded-md w-80 h-52 space-y-5 p-5 relative shadow-xl`}
+      className={`mt-5 ${task.color} rounded-md w-80 h-52 space-y-5 p-5 relative shadow-md`}
     >
       <div className="flex flex-row items-center justify-between pb-2 border-b border-b-slate-300">
         <h1 className="text-gray-600 font-bold text-xl">{task.title}</h1>
@@ -61,7 +61,6 @@ export const TaskCard = ({ task }) => {
             />
           </button>
 
-          {/* Botón para abrir el menú */}
           <Button
             onClick={() => setIsOpen((prev) => !prev)}
             className="relative text-black bg-white rounded-2xl px-3 shadow-md"
@@ -102,7 +101,6 @@ export const TaskCard = ({ task }) => {
               <div onClick={() => setIsColorMenuOpen((prev) => !prev)}>
                 <ButtonCard icon={<Palette />} title="Color" />
               </div>
-              {/* Submenú siempre presente en el DOM */}
               <div
                 className={`absolute right-[-3px] top-[-60px] mt-1 w-auto bg-white rounded-t-2xl shadow-xl transition-all duration-300 transform z-50 ${
                   isColorMenuOpen
@@ -117,7 +115,8 @@ export const TaskCard = ({ task }) => {
                       className={`w-8 h-8 flex items-center cursor-pointer ${color.class}`}
                       onClick={() => {
                         updateTaskColor(task.id, color.class); // Cambia el color de la tarjeta
-                        setIsColorMenuOpen(false); // Cierra el submenú de colores
+                        setIsColorMenuOpen(false);
+                        setIsOpen(false);
                       }}
                     ></li>
                   ))}
